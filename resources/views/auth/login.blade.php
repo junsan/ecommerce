@@ -65,7 +65,7 @@
                                                 <label class="form-check-label" for="flexSwitchCheckDefault">Remember
                                                     me</label>
                                             </div>
-                                            <a class="forget_p" href="forget_password.html">forget password ?</a>
+                                            <a class="forget_p" href="{{route('password.request')}}">forget password ?</a>
                                         </div>
                                         <button class="common_btn" type="submit">login</button>
                                         <p class="social_text">Sign in with social account</p>
