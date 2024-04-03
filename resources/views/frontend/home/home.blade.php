@@ -133,7 +133,7 @@
                 </div>
             </div>
         </div>
-    </section>
+</section>
     <!--==========================
       PRODUCT MODAL VIEW END
     ===========================-->
