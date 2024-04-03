@@ -45,6 +45,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('vendor')
                 ->as('vendor.')
                 ->group(base_path('routes/vendor.php'));
+         
         });
     }
 }
