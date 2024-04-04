@@ -27,7 +27,7 @@
                     @csrf
                     <div class="form-group">
                       <label>Banner</label>
-                      <input name="banner" type="file" class="form-control">
+                      <input name="banner" id="banner" type="file" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Type</label>
