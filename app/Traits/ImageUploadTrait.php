@@ -36,4 +36,9 @@ trait ImageUploadTrait {
         return $slider->banner;
     }
 
+    public function imageDelete($path) {
+        if (File::exists(public_path($path))) {
+            File::delete(public_path($path));
+        }
+    }
 }

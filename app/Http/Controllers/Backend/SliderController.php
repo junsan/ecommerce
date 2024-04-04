@@ -108,8 +108,10 @@ class SliderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Slider $slider)
     {
-        //
+        $slider->delete();
+        $this->imageDelete($slider->banner);
+        return response(['status' => 'success', 'message' => 'Deleted Succcessfully!']);
     }
 }

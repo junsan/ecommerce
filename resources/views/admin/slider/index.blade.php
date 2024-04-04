@@ -40,7 +40,7 @@
                           <td>{{$slider->starting_price}}</td>
                           <td>
                             <a href="{{route('admin.slider.edit', $slider->id)}}" class="btn btn-success">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="{{route('admin.slider.destroy', $slider->id)}}" class="btn btn-danger delete-item">Delete</a>
                           </td>
                         </tr>
                         @endforeach
