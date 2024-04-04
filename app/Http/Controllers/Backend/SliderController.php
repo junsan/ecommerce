@@ -70,17 +70,39 @@ class SliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Slider $slider)
     {
-        //
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Slider $slider)
     {
-        //
+        $request->validate([
+            'banner' => 'image',
+            'type' => 'required|max:255',
+            'text' => 'required|max:255',
+            'starting_price' => 'required|max:255',
+            'button_url' => 'required|url',
+            'serial' => 'required|integer',
+            'status' => 'required'
+        ]);
+
+        $imagePath = $this->imageUpdate($request, 'banner', 'uploads', $slider);
+
+        $slider->banner = $imagePath;
+        $slider->type = $request->type;
+        $slider->text = $request->text;
+        $slider->starting_price = $request->starting_price;
+        $slider->button_url = $request->button_url;
+        $slider->serial = $request->serial;
+        $slider->status = $request->status;
+        $slider->save();
+
+        toastr('Slider has been updated successfully.');
+        return redirect()->back();
     }
 
     /**

@@ -39,7 +39,7 @@
                           <td>{{$slider->text}}</td>
                           <td>{{$slider->starting_price}}</td>
                           <td>
-                            <a href="" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.slider.edit', $slider->id)}}" class="btn btn-success">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
                           </td>
                         </tr>
