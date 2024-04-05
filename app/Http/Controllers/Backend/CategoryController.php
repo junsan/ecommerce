@@ -93,4 +93,13 @@ class CategoryController extends Controller
         $category->delete();
         return response(['status' => 'success', 'message' => 'Deleted Succcessfully!']);
     }
+
+    public function changeStatus(Request $request) 
+    {
+        $category = Category::findOrFail($request->id);
+        $category->status = $request->status == 'true' ? 1 : 0;
+        $category->save();
+        
+        return response(['status' => 'success', 'message' => 'Status has been updated.']);
+    }
 }

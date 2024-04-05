@@ -12,4 +12,7 @@ Route::post('profile/update', [ProfileController::class, 'updateProfile'])->name
 Route::post('profile/update/password', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
 
 Route::resource('slider', SliderController::class);
+
+Route::put('category', [CategoryController::class, 'changeStatus'])->name('change-status');
 Route::resource('category', CategoryController::class);
+
