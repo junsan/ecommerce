@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="{{asset('backend/assets/modules/jqvmap/dist/jqvmap.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/assets/modules/weather-icon/css/weather-icons.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/assets/modules/weather-icon/css/weather-icons-wind.min.css')}}">
-  <link rel="stylesheet" href="assets/modules/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="{{asset('backend/assets/modules/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/css/bootstrap-iconpicker.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}">
@@ -70,7 +71,7 @@
   <script src="{{asset('backend/assets/modules/summernote/summernote-bs4.js')}}"></script>
   <script src="{{asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/js/bootstrap-iconpicker.bundle.min.js"></script>
   <!-- Page Specific JS File -->
   <script src="{{asset('backend/assets/js/page/index-0.js')}}"></script>
   
