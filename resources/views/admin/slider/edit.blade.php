@@ -19,7 +19,7 @@
                   <div class="card-header">
                     <h4>Update Slider</h4>
                     <div class="card-header-action">
-                        <a href="" class="btn btn-light">Back</a>
+                        <a href="{{route('admin.slider.index')}}" class="btn btn-light">Back</a>
                     </div>
                   </div>
                   <div class="card-body">

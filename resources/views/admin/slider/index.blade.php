@@ -17,7 +17,7 @@
               <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Simple Table</h4>
+                    <h4>Slider Table</h4>
                     <div class="card-header-action">
                         <a href="{{route('admin.slider.create')}}" class="btn btn-primary">Create Slider</a>
                     </div>
@@ -30,6 +30,8 @@
                           <th>Banner</th>
                           <th>Text</th>
                           <th>Starting Price</th>
+                          <th>Order</th>
+                          <th>Status</th>
                           <th>Action</th>
                         </tr>
                         @foreach($sliders as $slider)
@@ -38,6 +40,14 @@
                           <td><img src="{{asset($slider->banner)}}" width="200" ></td>
                           <td>{{$slider->text}}</td>
                           <td>{{$slider->starting_price}}</td>
+                          <td>{{$slider->serial}}</td>
+                          <td>
+                            @if($slider->status)
+                                <div class="badge badge-success">Active</div>
+                            @else 
+                                <div class="badge badge-danger">Not active</div>
+                            @endif
+                          </td>
                           <td>
                             <a href="{{route('admin.slider.edit', $slider->id)}}" class="btn btn-success">Edit</a>
                             <a href="{{route('admin.slider.destroy', $slider->id)}}" class="btn btn-danger delete-item">Delete</a>
