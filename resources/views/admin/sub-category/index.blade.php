@@ -28,6 +28,7 @@
                         <tr>
                           <th>ID</th>
                           <th>Name</th>
+                          <th>Category</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
@@ -35,6 +36,7 @@
                         <tr>
                           <td>{{$category->id}}</td>
                           <td>{{$category->name}}</td>
+                          <td>{{$category->category->name}}</td>
                           <td>
                             @if($category->status)
                             <label class="custom-switch mt-2">
@@ -49,8 +51,8 @@
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.category.edit', $category->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.category.destroy', $category->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.sub-category.edit', $category->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.sub-category.destroy', $category->id)}}" class="btn btn-danger delete-item">Delete</a>
                           </td>
                         </tr>
                         @endforeach
