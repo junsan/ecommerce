@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -30,7 +31,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'icon' => 'required|not_in:empty',
+            'name' => 'required|max:255|unique:categories,name',
+            'status' => 'required'
+        ]);
+
+        $category = new Category();
+        $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->status = $request->status;
+        $category->save();
+
+        toastr('Category has been created');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -44,17 +59,30 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'icon' => 'required|not_in:empty',
+            'name' => 'required|max:255|unique:categories,name,'.$category->id,
+            'status' => 'required'
+        ]);
+
+        $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->status = $request->status;
+        $category->save();
+
+        toastr('Category has been updated');
+        return redirect()->route('admin.category.index');
     }
 
     /**

@@ -34,19 +34,19 @@
                         </tr>
                         @foreach($categories as $category)
                         <tr>
-                          <td>{{$slider->id}}</td>
-                          <td>{{$category->icon}}</td>
+                          <td>{{$category->id}}</td>
+                          <td><i style="font-size: 40px" class="{{$category->icon}}"></i></td>
                           <td>{{$category->name}}</td>
                           <td>
-                            @if($slider->category)
+                            @if($category->status)
                                 <div class="badge badge-success">Active</div>
                             @else 
                                 <div class="badge badge-danger">Not active</div>
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.category.edit', $slider->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.category.destroy', $slider->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.category.edit', $category->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.category.destroy', $category->id)}}" class="btn btn-danger delete-item">Delete</a>
                           </td>
                         </tr>
                         @endforeach
