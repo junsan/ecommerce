@@ -92,7 +92,7 @@
                 
                 $.ajax({
                     type: 'PUT',
-                    url: "{{route('admin.change-status')}}",
+                    url: "{{route('admin.sub-category.change-status')}}",
                     data: {
                         id: id,
                         status: isChecked
