@@ -19,7 +19,7 @@
                   <div class="card-header">
                     <h4>Child Category Table</h4>
                     <div class="card-header-action">
-                        <a href="{{route('admin.child-category.create')}}" class="btn btn-primary">Create Sub-Category</a>
+                        <a href="{{route('admin.child-category.create')}}" class="btn btn-primary">Create Child Category</a>
                     </div>
                   </div>
                   <div class="card-body">

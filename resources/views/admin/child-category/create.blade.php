@@ -36,7 +36,7 @@
                     </div>  
                     <div class="form-group">
                       <label>Sub-Category</label>
-                      <select name="category" class="form-control form-control-sm sub-category">
+                      <select name="sub_category" class="form-control form-control-sm sub-category">
                         <option value="">Select</option>
                       </select>
                     </div>   
