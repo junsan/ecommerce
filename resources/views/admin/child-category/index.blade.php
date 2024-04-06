@@ -94,14 +94,14 @@
                 
                 $.ajax({
                     type: 'PUT',
-                    url: "{{route('admin.sub-category.change-status')}}",
+                    url: "{{route('admin.child-category.change-status')}}",
                     data: {
                         id: id,
                         status: isChecked
                     },
                     success: function (data) {
                         if(data.status == 'success') {
-                            
+                         
                         }
                     }
                 })
