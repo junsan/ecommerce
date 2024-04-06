@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
@@ -93,6 +94,12 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subCategory)
     {
+        $childCategories = ChildCategory::where('sub_category_id', $subCategory->id)->count();
+        
+        if ($childCategories > 0) {
+            return response(['status' => 'error', 'message' => 'Cannot delete. Delete first child category.']);
+        }
+
         $subCategory->delete();
         return response(['status' => 'success', 'message' => 'Deleted Succcessfully!']);
     }
