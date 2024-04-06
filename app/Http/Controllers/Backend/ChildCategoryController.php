@@ -64,25 +64,43 @@ class ChildCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ChildCategory $childCategory)
     {
-        //
+        $categories = Category::all();
+        $subCategories = SubCategory::where('category_id', $childCategory->category_id)->get();
+        return view('admin.child-category.edit', compact('categories', 'childCategory', 'subCategories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, ChildCategory $childCategory)
     {
-        //
+        $request->validate([
+            'category' => 'required',
+            'sub_category' => 'required',
+            'name' => 'required|max:255|unique:child_categories,name,'.$childCategory->id,
+            'status' => 'required'
+        ]);
+
+        $childCategory->category_id = $request->category;
+        $childCategory->sub_category_id = $request->sub_category;
+        $childCategory->name = $request->name;
+        $childCategory->slug = Str::slug($request->name);
+        $childCategory->status = $request->status;
+        $childCategory->save();
+
+        toastr('Child Category has been updated.');
+        return redirect()->route('admin.child-category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(ChildCategory $childCategory)
     {
-        //
+        $childCategory->delete();
+        return response(['status' => 'success', 'message' => 'Deleted Succcessfully!']);
     }
 
     public function getSubCategories(Request $request) 
