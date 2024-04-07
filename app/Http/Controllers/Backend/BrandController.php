@@ -66,17 +66,34 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Brand $brand)
     {
-        //
+        return view('admin.brand.edit', compact('brand'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Brand $brand)
     {
-        //
+        $request->validate([
+            'logo' => 'image',
+            'name' => 'required|max:255',
+            'is_featured' => 'required',
+            'status' => 'required',
+        ]);
+
+        $imagePath = $this->imageUpdate($request, 'logo', 'uploads', $brand);
+
+        $brand->logo = $imagePath;
+        $brand->name = $request->name;
+        $brand->slug =  Str::slug($request->name);
+        $brand->is_featured = $request->is_featured;
+        $brand->status = $request->status;
+        $brand->save();
+
+        toastr('Banner has been updated successfully.');
+        return redirect()->route('admin.brand.index');
     }
 
     /**

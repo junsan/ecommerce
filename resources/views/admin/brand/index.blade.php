@@ -27,16 +27,24 @@
                       <table class="table table-bordered table-md">
                         <tr>
                           <th>ID</th>
+                          <th>Logo</th>
                           <th>Name</th>
-                          <th>Category</th>
-                          <th>Sub-Category</th>
+                          <th>Featured</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
                         @foreach($brands as $brand)
                         <tr>
                           <td>{{$brand->id}}</td>
+                          <td><img src="{{asset($brand->logo)}}" width="150" ></td>
                           <td>{{$brand->name}}</td>
+                          <td>
+                            @if($brand->is_featured)
+                                <div class="badge badge-info">Yes</div>
+                            @else 
+                                <div class="badge badge-warning">No</div>
+                            @endif
+                          </td>
                           <td>
                             @if($brand->status)
                             <label class="custom-switch mt-2">
@@ -51,8 +59,8 @@
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.child-category.edit', $brand->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.child-category.destroy', $brand->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.brand.edit', $brand->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.brand.destroy', $brand->id)}}" class="btn btn-danger delete-item">Delete</a>
                           </td>
                         </tr>
                         @endforeach

@@ -22,8 +22,8 @@ trait ImageUploadTrait {
         
         if ($request->hasFile($imageName)) {
 
-            if (File::exists(public_path($slider->image))) {
-                File::delete(public_path($slider->image));
+            if (File::exists(public_path($slider->{$imageName}))) {
+                File::delete(public_path($slider->{$imageName}));
             }
 
             $image = $request->{$imageName};
@@ -33,7 +33,7 @@ trait ImageUploadTrait {
             return $path.'/'.$imageName;
         }
 
-        return $slider->banner;
+        return $slider->{$imageName};
     }
 
     public function imageDelete($path) {
