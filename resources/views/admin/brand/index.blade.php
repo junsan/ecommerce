@@ -100,7 +100,7 @@
                 
                 $.ajax({
                     type: 'PUT',
-                    url: "{{route('admin.child-category.change-status')}}",
+                    url: "{{route('admin.brand.change-status')}}",
                     data: {
                         id: id,
                         status: isChecked
