@@ -27,7 +27,7 @@
                     @csrf
                     <div class="form-group">
                       <label>Thumbnail</label>
-                      <input name="banner" id="banner" type="file" class="form-control">
+                      <input name="image" id="image" type="file" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Name</label>
@@ -68,6 +68,10 @@
                     <div class="form-group">
                       <label>Sku</label>
                       <input name="sku" value="{{old('sku')}}" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Stock</label>
+                      <input name="qty" value="{{old('qty')}}" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Price</label>
@@ -130,6 +134,10 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Video Link</label>
+                      <input name="video_link" value="{{old('video_link')}}" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Seo Title</label>
