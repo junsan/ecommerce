@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->text('thumb_image');
             $table->integer('vendor_id');
             $table->integer('category_id');
             $table->integer('sub_category_id')->default(0);
