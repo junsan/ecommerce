@@ -104,7 +104,7 @@
                       <textarea name="long_description" class="summernote"></textarea>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Is Top</label>
                                 <select name="is_top" class="form-control form-control-sm">
@@ -114,7 +114,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Is Best</label>
                                 <select name="is_best" class="form-control form-control-sm">
@@ -124,10 +124,20 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Is Featured</label>
                                 <select name="is_featured" class="form-control form-control-sm">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Is New Arrival</label>
+                                <select name="is_new_arrival" class="form-control form-control-sm">
                                     <option value="">Select</option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>

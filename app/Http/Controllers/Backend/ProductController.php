@@ -53,6 +53,7 @@ class ProductController extends Controller
             'is_top' => 'required',
             'is_best' => 'required',
             'is_featured' => 'required',
+            'is_new_arrival' => 'required',
             'seo_title' => 'required|max:255',
             'seo_description' => 'required|max:600',
             'status' => 'required'
@@ -81,6 +82,7 @@ class ProductController extends Controller
         $product->is_top = $request->is_top;
         $product->is_best = $request->is_best;
         $product->is_featured = $request->is_featured;
+        $product->is_new_arrival = $request->is_new_arrival;
         $product->status = $request->status;
         $product->is_approved = 1;
         $product->seo_title = $request->seo_title;

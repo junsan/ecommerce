@@ -27,30 +27,28 @@
                       <table class="table table-bordered table-md">
                         <tr>
                           <th>ID</th>
-                          <th>Banner</th>
-                          <th>Text</th>
-                          <th>Starting Price</th>
-                          <th>Order</th>
+                          <th>Thumbnail</th>
+                          <th>Name</th>
+                          <th>Price</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
-                        @foreach($products as $slider)
+                        @foreach($products as $product)
                         <tr>
-                          <td>{{$slider->id}}</td>
-                          <td><img src="{{asset($slider->banner)}}" width="200" ></td>
-                          <td>{{$slider->text}}</td>
-                          <td>{{$slider->starting_price}}</td>
-                          <td>{{$slider->serial}}</td>
+                          <td>{{$product->id}}</td>
+                          <td><img src="{{asset($product->thumb_image)}}" width="100" ></td>
+                          <td>{{$product->name}}</td>
+                          <td>{{$product->price}}</td>
                           <td>
-                            @if($slider->status)
+                            @if($product->status)
                                 <div class="badge badge-success">Active</div>
                             @else 
                                 <div class="badge badge-danger">Not active</div>
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.slider.edit', $slider->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.slider.destroy', $slider->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.product.edit', $product->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.product.destroy', $product->id)}}" class="btn btn-danger delete-item">Delete</a>
                           </td>
                         </tr>
                         @endforeach

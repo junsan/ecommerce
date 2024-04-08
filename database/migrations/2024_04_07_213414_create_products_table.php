@@ -27,16 +27,17 @@ return new class extends Migration
             $table->text('video_link')->nullable();
             $table->string('sku')->nullable();
             $table->double('price');
-            $table->double('offer_price')->nullable();;
-            $table->date('offer_start_date')->nullable();;
-            $table->date('offer_end_date')->nullable();;
-            $table->boolean('is_top')->nullable();;
-            $table->boolean('is_best')->nullable();;
-            $table->boolean('is_featured')->nullable();;
+            $table->double('offer_price')->nullable();
+            $table->date('offer_start_date')->nullable();
+            $table->date('offer_end_date')->nullable();
+            $table->boolean('is_top')->nullable();
+            $table->boolean('is_best')->nullable();
+            $table->boolean('is_featured')->nullable();
+            $table->boolean('is_new_arrival')->nullable();
             $table->boolean('status');
             $table->integer('is_approved')->default(0);
-            $table->string('seo_title')->nullable();;
-            $table->text('seo_description')->nullable();;
+            $table->string('seo_title')->nullable();
+            $table->text('seo_description')->nullable();
             $table->timestamps();
         });
     }
