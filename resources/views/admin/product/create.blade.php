@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label>Category</label>
-                            <select name="status" class="form-control form-control-sm main-category">
+                            <select name="category" class="form-control form-control-sm main-category">
                                 <option value="">Select</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -45,19 +45,101 @@
                         </div>
                         <div class="col-md-4">
                             <label>Sub-Category</label>
-                            <select name="status" class="form-control form-control-sm sub-category">
+                            <select name="sub_category" class="form-control form-control-sm sub-category">
                                 <option value="">Select</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label>Child Category</label>
-                            <select name="status" class="form-control form-control-sm child-category">
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                            <select name="child_category" class="form-control form-control-sm child-category">
+                                <option value="">Select</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group mt-4">
+                      <label>Brand</label>
+                      <select name="brand" class="form-control form-control-sm">
+                        <option value="">Select</option>
+                        @foreach($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Sku</label>
+                      <input name="sku" value="{{old('sku')}}" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Price</label>
+                      <input name="price" value="{{old('price')}}" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Offer Price</label>
+                      <input name="offer_price" value="{{old('offer_price')}}" type="text" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Offer Start Date</label>
+                                <input name="offer_start_date" value="{{old('offer_start_date')}}" type="text" class="form-control datepicker">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Offer End Date</label>
+                                <input name="offer_end_date" value="{{old('offer_end_date')}}" type="text" class="form-control datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Short Description</label>
+                      <textarea name="short_description" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Long Description</label>
+                      <textarea name="long_description" class="summernote"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Is Top</label>
+                                <select name="is_top" class="form-control form-control-sm">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Is Best</label>
+                                <select name="is_best" class="form-control form-control-sm">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Is Featured</label>
+                                <select name="is_featured" class="form-control form-control-sm">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Seo Title</label>
+                      <input name="seo_title" value="{{old('seo_title')}}" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Seo Description</label>
+                      <textarea name="seo_description" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
                       <label>Status</label>
                       <select name="status" class="form-control form-control-sm">
                         <option value="1">Active</option>
