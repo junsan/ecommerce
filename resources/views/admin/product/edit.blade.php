@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                       <label>Thumbnail</label>
-                      <input name="image" id="image" type="file" class="form-control">
+                      <input name="thumb_image" id="thumb_image" type="file" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Name</label>
