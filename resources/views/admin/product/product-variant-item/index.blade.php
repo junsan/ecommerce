@@ -39,7 +39,7 @@
                           <td>{{$variantItem->name}}</td>
                           <td>{{$variantItem->price}}</td>
                           <td>
-                            @if($variantItem->is_defualt)
+                            @if($variantItem->is_default)
                                 <div class="badge badge-info">Yes</div>
                             @else 
                                 <div class="badge badge-dark">No</div>
@@ -59,8 +59,8 @@
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.product-variant.edit', $variantItem->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.product-variant.destroy', $variantItem->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.product-variant-item.edit', $variantItem->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.product-variant-item.destroy', $variantItem->id)}}" class="btn btn-danger delete-item">Delete</a>
                          </td>
                         </tr>
                         @endforeach
