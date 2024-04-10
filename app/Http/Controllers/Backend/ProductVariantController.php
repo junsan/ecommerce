@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\ProductVariantItem;
 
 class ProductVariantController extends Controller
 {
@@ -92,6 +93,12 @@ class ProductVariantController extends Controller
     public function destroy(string $id)
     {
         $productVariant = ProductVariant::findOrFail($id);
+        $variantItemCheck = ProductVariantItem::where('product_variant_id', $productVariant->id)->count();
+        
+        if ($variantItemCheck > 0) {
+            return response(['status' => 'error', 'message' => 'Cannot delete. Delete first variant items.']);
+        }
+
         $productVariant->delete();
         return response(['status' => 'success', 'message' => 'Deleted Succcessfully!']);
     }
