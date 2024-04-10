@@ -23,7 +23,7 @@
                     <form action="{{route('admin.product-image-gallery.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Upload Image <code>Multiple image is available</code></label>
+                            <label>Upload Images <code>Multiple image is available</code></label>
                             <input name="images[]" id="images" type="file" class="form-control" multiple>
                             <input name="product" type="hidden" value="{{$product->id}}" >
                         </div>
@@ -49,7 +49,7 @@
                           <td>{{$image->id}}</td>
                           <td><img src="{{asset($image->image)}}" width="100" ></td>
                           <td>
-                            <a href="{{route('admin.product.destroy', $product->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.product-image-gallery.destroy', $image->id)}}" class="btn btn-danger delete-item">Delete</a>
                          </td>
                         </tr>
                         @endforeach
