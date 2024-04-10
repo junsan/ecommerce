@@ -18,6 +18,21 @@ trait ImageUploadTrait {
         }
     }
 
+    public function imageMultipleUpload(Request $request, $imageName, $path) {
+
+        $paths = [];
+        if ($request->hasFile($imageName)) {
+
+            foreach($request->images as $image) {
+                $ext = $image->getClientOriginalExtension();
+                $imageName = 'media_'.uniqId().'.'.$ext;
+                $image->move(public_path($path.'/'), $imageName);
+                $paths[] = $path.'/'.$imageName;
+            }
+            return $paths;
+        }
+    }
+
     public function imageUpdate(Request $request, $imageName, $path, $slider) {
         
         if ($request->hasFile($imageName)) {
