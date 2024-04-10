@@ -81,3 +81,29 @@
           </div>
         </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $('document').ready(function() {
+            $('body').on('click', '.change-status', function() {
+                let isChecked = $(this).is(':checked');
+                let id = $(this).data('id');
+                
+                $.ajax({
+                    type: 'PUT',
+                    url: "{{route('admin.product-variant.change-status')}}",
+                    data: {
+                        id: id,
+                        status: isChecked
+                    },
+                    success: function (data) {
+                        if(data.status == 'success') {
+                         
+                        }
+                    }
+                })
+
+            });
+        })    
+    </script>
+@endpush
