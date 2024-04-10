@@ -4,11 +4,11 @@
     <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Product Variant</h1>
+            <h1>Product Variant Item</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Components</a></div>
-              <div class="breadcrumb-item">Product Variant</div>
+              <div class="breadcrumb-item">Product Variant Item</div>
             </div>
           </div>
 
@@ -17,9 +17,9 @@
               <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Product: {{$product->name}}</h4>
+                    <h4>Product Variant: {{$variant->name}}</h4>
                     <div class="card-header-action">
-                        <a href="{{route('admin.product-variant.create', ['product' => $product->id])}}" class="btn btn-primary">Create Product Variant</a>
+                        <a href="{{route('admin.product-variant-item.create', ['variant' => $variant->id])}}" class="btn btn-primary">Create Product Variant Item</a>
                     </div>
                   </div>
                   <div class="card-body">
@@ -28,30 +28,39 @@
                         <tr>
                           <th>ID</th>
                           <th>Name</th>
+                          <th>Price</th>
+                          <th>Is Defualt</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
-                        @foreach($productVariants as $variant)
+                        @foreach($productVariantItems as $variantItem)
                         <tr>
-                          <td>{{$variant->id}}</td>
-                          <td>{{$variant->name}}</td>
+                          <td>{{$variantItem->id}}</td>
+                          <td>{{$variantItem->name}}</td>
+                          <td>{{$variantItem->price}}</td>
                           <td>
-                            @if($variant->status)
+                            @if($variantItem->is_defualt)
+                                <div class="badge badge-info">Yes</div>
+                            @else 
+                                <div class="badge badge-dark">No</div>
+                            @endif
+                          </td>
+                          <td>
+                            @if($variantItem->status)
                             <label class="custom-switch mt-2">
-                                <input data-id="{{$variant->id}}" checked type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
+                                <input data-id="{{$variantItem->id}}" checked type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
                                 <span class="custom-switch-indicator"></span>
                             </label>
                             @else 
                             <label class="custom-switch mt-2">
-                                <input data-id="{{$variant->id}}" type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
+                                <input data-id="{{$variantItem->id}}" type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
                                 <span class="custom-switch-indicator"></span>
                             </label>
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.product-variant-item.index', ['variant' => $variant->id])}}" class="btn btn-info">Variant Items</a> 
-                            <a href="{{route('admin.product-variant.edit', $variant->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.product-variant.destroy', $variant->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.product-variant.edit', $variantItem->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.product-variant.destroy', $variantItem->id)}}" class="btn btn-danger delete-item">Delete</a>
                          </td>
                         </tr>
                         @endforeach
