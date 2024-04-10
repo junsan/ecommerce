@@ -37,14 +37,21 @@
                           <td>{{$variant->name}}</td>
                           <td>
                             @if($variant->status)
-                                <div class="badge badge-success">Active</div>
+                            <label class="custom-switch mt-2">
+                                <input data-id="{{$variant->id}}" checked type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
                             @else 
-                                <div class="badge badge-danger">Not active</div>
+                            <label class="custom-switch mt-2">
+                                <input data-id="{{$variant->id}}" type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
                             @endif
                           </td>
                           <td>
-                            <a href="{{route('admin.product.edit', $variant->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{route('admin.product.destroy', $variant->id)}}" class="btn btn-danger delete-item">Delete</a>
+                            <a href="{{route('admin.product.edit', $variant->id)}}" class="btn btn-info">Variant Items</a> 
+                            <a href="{{route('admin.product-variant.edit', $variant->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('admin.product-variant.destroy', $variant->id)}}" class="btn btn-danger delete-item">Delete</a>
                          </td>
                         </tr>
                         @endforeach

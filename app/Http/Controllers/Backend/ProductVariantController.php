@@ -62,7 +62,8 @@ class ProductVariantController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $variant = ProductVariant::findOrFail($id);
+        return view('admin.product.product-variant.edit', compact('variant'));
     }
 
     /**
@@ -70,7 +71,19 @@ class ProductVariantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'status' => 'required',
+        ]);
+
+        $productVariant = ProductVariant::findOrFail($id);
+        $productVariant->name = $request->name;
+        $productVariant->status = $request->status;
+        $productVariant->save();
+
+        toastr('Product Variant has been updated successfully.');
+        return redirect()->route('admin.product-variant.index', ['product' => $productVariant->product_id]);
+   
     }
 
     /**
