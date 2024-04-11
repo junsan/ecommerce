@@ -204,5 +204,14 @@ class ProductController extends Controller
     {
         $childCategories = ChildCategory::where('sub_category_id', $request->id)->get();
         return response(['status' => 'success', 'data' => $childCategories]);
-    }    
+    }   
+    
+    public function changeStatus(Request $request) 
+    {
+        $product = Product::findOrFail($request->id);
+        $product->status = $request->status == 'true' ? 1 : 0;
+        $product->save();
+        
+        return response(['status' => 'success', 'message' => 'Status has been updated.']);
+    }
 }

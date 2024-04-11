@@ -41,9 +41,15 @@
                           <td>{{$product->price}}</td>
                           <td>
                             @if($product->status)
-                                <div class="badge badge-success">Active</div>
+                            <label class="custom-switch mt-2">
+                                <input data-id="{{$product->id}}" checked type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
                             @else 
-                                <div class="badge badge-danger">Not active</div>
+                            <label class="custom-switch mt-2">
+                                <input data-id="{{$product->id}}" type="checkbox" name="custom-switch-checkbox" class="custom-switch-input change-status">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
                             @endif
                           </td>
                           <td>
@@ -88,3 +94,31 @@
           </div>
         </section>
 @endsection
+
+@push('scripts')
+
+    <script>
+        $('document').ready(function() {
+            $('body').on('click', '.change-status', function() {
+                let isChecked = $(this).is(':checked');
+                let id = $(this).data('id');
+                
+                $.ajax({
+                    type: 'PUT',
+                    url: "{{route('admin.product.change-status')}}",
+                    data: {
+                        id: id,
+                        status: isChecked
+                    },
+                    success: function (data) {
+                        if(data.status == 'success') {
+                            
+                        }
+                    }
+                })
+
+            });
+        })    
+    </script>
+
+@endpush
