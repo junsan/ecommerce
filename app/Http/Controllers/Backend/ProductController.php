@@ -9,6 +9,8 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\ChildCategory;
 use App\Models\Brand;
+use App\Models\ProductVariant;
+use App\Models\ProductImageGallery;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -172,9 +174,24 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        $variants = ProductVariant::where('product_id', $product->id)->get();
+        foreach($variants as $variant) {
+            $variant->variantItems()->delete();
+            $variant->delete();
+        }
+
+        $imageGallery = ProductImageGallery::where('product_id', $product->id)->get();
+        foreach($imageGallery as $image) {
+            $this->imageDelete($image->image);
+            $image->delete();
+        }
+
+        $this->imageDelete($product->thumb_image);
+        $product->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Succcessfully!']);
     }
 
     public function getSubCategories(Request $request) 

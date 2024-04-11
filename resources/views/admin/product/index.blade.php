@@ -56,7 +56,7 @@
                                 <div class="dropdown-menu dropleft" x-placement="left-start" style="position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
                                     <a class="dropdown-item" href="{{route('admin.product-image-gallery.index', ['product' => $product->id])}}">Image Gallery</a>
                                     <a class="dropdown-item" href="{{route('admin.product-variant.index', ['product' => $product->id])}}">Product Variant</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    
                                 </div>
                             </div>
                          </td>
